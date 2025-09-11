@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demande de devis — Électricien Pro</title>
+  <meta name="description" content="Remplissez votre demande de devis : service, adresse, téléphone, description du problème. Résumé avant envoi WhatsApp."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="C:\Users\GOHOUE Christ\OneDrive\Documents\SITE PRECIEUX\assets\css\style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="logo">⚡</span>
+        <span>BHPR ELEC</span>
+      </a>
+      <nav class="menu">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#realisations">Réalisations</a>
+        <a href="index.html#avis">Avis</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1 class="section-title">Demande de devis</h1>
+      <p>Remplissez les informations ci-dessous. Vous verrez un <strong>résumé</strong> avant l’envoi sur WhatsApp.</p>
+
+      <form id="formDevis" class="card devis-form" novalidate>
+        <div class="grid two">
+          <label>Nom complet
+            <input type="text" name="nom" required placeholder="Votre nom complet" />
+          </label>
+          <label>Téléphone (WhatsApp si possible)
+            <input type="tel" name="tel" required placeholder="+229 ..." />
+          </label>
+        </div>
+
+        <div class="grid two">
+          <label>Adresse d’intervention
+            <input type="text" name="adresse" required placeholder="Ex: Cotonou, quartier..." />
+          </label>
+          <label>Service souhaité
+            <select name="service" required>
+              <option value="">— Choisir —</option>
+              <option>Installation</option>
+              <option>Dépannage</option>
+              <option>Maintenance</option>
+              <option>Domotique</option>
+              <option>Autre</option>
+            </select>
+          </label>
+        </div>
+
+        <label>Description du problème
+          <textarea name="description" rows="5" required placeholder="Expliquez clairement votre besoin, l’équipement, la pièce, l’urgence…"></textarea>
+        </label>
+
+        <div class="grid two">
+          <label>Date souhaitée (optionnel)
+            <input type="date" name="dateSouhaitee" />
+          </label>
+          <label>Créneau horaire (optionnel)
+            <input type="text" name="horaire" placeholder="Ex: Matin, 9h-12h" />
+          </label>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-outline" type="reset">Réinitialiser</button>
+          <button class="btn btn-primary" type="submit">Voir le résumé</button>
+        </div>
+      </form>
+
+      <section id="resumeSection" class="card resume" hidden aria-live="polite" aria-atomic="true">
+        <h2>Résumé de votre demande</h2>
+        <pre id="resumeText" class="resume-text"></pre>
+        <div class="actions">
+          <button id="btnModifier" class="btn btn-outline">Modifier</button>
+          <button id="btnEnvoyer" class="btn btn-primary">Envoyer sur WhatsApp</button>
+        </div>
+        <p class="hint">En cliquant sur « Envoyer sur WhatsApp », votre application WhatsApp s’ouvrira avec le message pré-rempli pour le gérant.</p>
+      </section>
+
+      <p class="note">
+        🔒 Aucune donnée n’est stockée sur le site. L’envoi utilise uniquement WhatsApp.
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Électricien Pro — Tous droits réservés.</p>
+      <a href="index.html" class="btn btn-small">Retour à l'accueil</a>
+    </div>
+  </footer>
+
+  <script src="C:\Users\GOHOUE Christ\OneDrive\Documents\SITE PRECIEUX\assets\js\devis.js" defer></script>
+</body>
+</html>
