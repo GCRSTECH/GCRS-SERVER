@@ -20,7 +20,7 @@ if (burger && mobile) {
 
 // Formulaire de contact (démo)
 const formContact = document.getElementById('formContact');
-const WHATSAPP_PHONE = "+229 40 81 36 67"; // ← Remplace par le numéro WhatsApp du propriétaire
+const WHATSAPP_PHONE = "22940813667"; // ← Remplace par le numéro WhatsApp du propriétaire
 
 formContact.addEventListener("submit", function(e){
   e.preventDefault(); // empêche l'envoi classique
