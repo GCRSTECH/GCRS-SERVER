@@ -7,7 +7,7 @@ const burger = document.querySelector('.burger');
 const mobile = document.getElementById('menuMobile');
 if (burger && mobile) {
   burger.addEventListener('click', () => {
-    const open = mobile.hasAttribute('hidden') ? false : true;
+    const open = !mobile.hasAttribute('hidden');
     if (open) {
       mobile.setAttribute('hidden', '');
       burger.setAttribute('aria-expanded', 'false');
@@ -18,32 +18,31 @@ if (burger && mobile) {
   });
 }
 
-// Formulaire de contact (démo)
+// Formulaire de contact → WhatsApp + confirmation
 const formContact = document.getElementById('formContact');
-const WHATSAPP_PHONE = "22940813667"; // ← Remplace par le numéro WhatsApp du propriétaire
+const WHATSAPP_PHONE = "22940813667"; // numéro WhatsApp
 
-formContact.addEventListener("submit", function(e){
-  e.preventDefault(); // empêche l'envoi classique
-
-  const nom = formContact.nom.value.trim();
-  const tel = formContact.tel.value.trim();
-  const message = formContact.message.value.trim();
-
-  if(!nom || !tel || !message){
-    alert("Veuillez remplir tous les champs !");
-    return;
-  }
-
-  const text = `Nouveau message de ${nom} (${tel}):\n\n${message}`;
-  const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
-
-  window.open(url, "_blank"); // ouvre WhatsApp avec le message prêt à envoyer
-});
 if (formContact) {
-  formContact.addEventListener('submit', (e) => {
+  formContact.addEventListener("submit", function(e){
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(formContact).entries());
-    alert('Merci ' + (data.nom || '') + ' ! Votre message a été bien reçu. Nous vous contactons très vite.');
+
+    const nom = formContact.nom.value.trim();
+    const tel = formContact.tel.value.trim();
+    const message = formContact.message.value.trim();
+
+    if(!nom || !tel || !message){
+      alert("Veuillez remplir tous les champs !");
+      return;
+    }
+
+    const text = `Nouveau message de ${nom} (${tel}):\n\n${message}`;
+    const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
+
+    // Ouvrir WhatsApp avec le message
+    window.open(url, "_blank");
+
+    // Confirmation + reset
+    alert('Merci ' + nom + ' ! Votre message a été préparé pour WhatsApp.');
     formContact.reset();
   });
 }
