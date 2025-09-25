@@ -1,30 +1,24 @@
-// Interactions globales
+// ====== ANNEE DANS LE FOOTER ======
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Menu burger
-const burger = document.querySelector('.burger');
-const mobile = document.getElementById('menuMobile');
-if (burger && mobile) {
-  burger.addEventListener('click', () => {
-    const open = !mobile.hasAttribute('hidden');
-    if (open) {
-      mobile.setAttribute('hidden', '');
-      burger.setAttribute('aria-expanded', 'false');
-    } else {
-      mobile.removeAttribute('hidden');
-      burger.setAttribute('aria-expanded', 'true');
-    }
+// ====== MENU BURGER MOBILE ======
+const burger = document.querySelector(".burger");
+const menuMobile = document.querySelector(".menu-mobile");
+
+if (burger && menuMobile) {
+  burger.addEventListener("click", () => {
+    menuMobile.classList.toggle("active");
   });
 }
 
-// Formulaire de contact → WhatsApp + confirmation
+// ====== FORMULAIRE DE CONTACT ======
 const formContact = document.getElementById('formContact');
-const WHATSAPP_PHONE = "22940813667"; // numéro WhatsApp
+const WHATSAPP_PHONE = "22940813667"; // Remplace par ton numéro WhatsApp
 
 if (formContact) {
   formContact.addEventListener("submit", function(e){
-    e.preventDefault();
+    e.preventDefault(); // Empêche l'envoi classique
 
     const nom = formContact.nom.value.trim();
     const tel = formContact.tel.value.trim();
@@ -35,14 +29,13 @@ if (formContact) {
       return;
     }
 
+    // Ouvre WhatsApp avec le message prêt à envoyer
     const text = `Nouveau message de ${nom} (${tel}):\n\n${message}`;
     const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
-
-    // Ouvrir WhatsApp avec le message
     window.open(url, "_blank");
 
-    // Confirmation + reset
-    alert('Merci ' + nom + ' ! Votre message a été préparé pour WhatsApp.');
+    // Confirmation à l'utilisateur et reset du formulaire
+    alert(`Merci ${nom} ! Votre message a été bien reçu. Nous vous contactons très vite.`);
     formContact.reset();
   });
 }
